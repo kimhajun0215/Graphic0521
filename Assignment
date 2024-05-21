@@ -1,0 +1,45 @@
+#include <graphics.h>
+#include <conio.h>
+#include <math.h>
+
+void drawCircle(int x, int y, int radius) {
+    circle(x, y, radius);
+}
+
+void drawTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+    line(x1, y1, x2, y2);
+    line(x2, y2, x3, y3);
+    line(x3, y3, x1, y1);
+}
+
+int main() {
+    int gd = DETECT, gm;
+    initgraph(&gd, &gm, "");
+
+    drawCircle(200, 200, 50);
+
+    drawTriangle(300, 300, 350, 350, 250, 350);
+
+    getch();
+    closegraph();
+    return 0;
+}
+void CMyAppView::OnDraw(CDC* pDC)
+{
+    CMyAppDoc* pDoc = GetDocument();
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
+
+    pDC->Rectangle(50, 50, 200, 200);
+
+    pDC->Ellipse(250, 50, 400, 200);
+
+    pDC->TextOutW(450, 50, _T("Hello, MFC!"));
+
+    POINT pentagon[5] = { {500, 150}, {550, 100}, {600, 150}, {575, 200}, {525, 200} };
+    pDC->Polygon(pentagon, 5);
+
+    POINT hexagon[6] = { {700, 150}, {750, 100}, {800, 150}, {800, 200}, {750, 250}, {700, 200} };
+    pDC->Polygon(hexagon, 6);
+}
